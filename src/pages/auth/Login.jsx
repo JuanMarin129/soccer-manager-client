@@ -31,6 +31,8 @@ function Login() {
 
       // Validar el Token y saber quién es el usuario dueño del Token.
       authenticateUser();
+
+      navigate("/");
       
     } catch (error) {
       console.log(error)
