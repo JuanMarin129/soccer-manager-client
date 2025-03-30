@@ -24,14 +24,13 @@ function Navbar() {
 
   }
 
-  console.log(userRole);
   return (
     
     <div id="navbar">
         {isLoggedIn === true 
         ?
           <>
-            <button>Calendario</button>
+            <Link to="/calendario"><button>Calendario</button></Link>
             {userRole === "entrenador" ?   
             <button>Crear Partidos</button>
             : null}   
