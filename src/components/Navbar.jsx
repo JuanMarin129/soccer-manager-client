@@ -24,7 +24,7 @@ function Navbar() {
 
   }
 
-
+  console.log(userRole);
   return (
     
     <div id="navbar">

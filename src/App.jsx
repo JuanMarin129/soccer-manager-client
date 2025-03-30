@@ -9,7 +9,6 @@ import Signup from './pages/auth/Signup'
 import Login from './pages/auth/Login'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
