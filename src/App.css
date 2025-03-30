@@ -31,3 +31,17 @@ a {
   border-radius: 10%;
   padding: 10px;
 }
+
+.formularioMatchCard {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.formularioMatchCard select {
+  margin-bottom: 20px;
+}
+
+.formularioMatchCard input {
+  margin-bottom: 20px;
+}

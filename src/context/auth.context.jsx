@@ -1,6 +1,7 @@
 // Componente Contexto => comparte los estados
-import axios from "axios";
+//import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import service from "../services/config.services";
 
 const AuthContext = createContext();
 
@@ -24,8 +25,9 @@ function AuthWrapper(props) {
 
         try {
             
-            const authToken = localStorage.getItem("authToken")
-            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/auth/verify`, {
+            //const authToken = localStorage.getItem("authToken")
+            //const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/auth/verify`, {
+            const response = await service.get(`/auth/verify`, {
                 headers: {
                     authorization: `Bearer ${authToken}`
                 }

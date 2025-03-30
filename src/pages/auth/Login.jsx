@@ -1,7 +1,8 @@
-import axios from 'axios';
+//import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
+import service from '../../services/config.services';
 
 
 function Login() {
@@ -21,7 +22,8 @@ function Login() {
 
     try {
 
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`, {
+      //const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`, {
+      const response = await service.post(`/auth/login`, {
         email: email,
         password: password
       })
@@ -30,7 +32,7 @@ function Login() {
       localStorage.setItem("authToken", response.data.authToken)
 
       // Validar el Token y saber quién es el usuario dueño del Token.
-      authenticateUser();
+      await authenticateUser();
 
       navigate("/");
       

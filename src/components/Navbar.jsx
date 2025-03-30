@@ -32,7 +32,7 @@ function Navbar() {
           <>
             <Link to="/calendario"><button>Calendario</button></Link>
             {userRole === "entrenador" ?   
-            <button>Crear Partidos</button>
+            <Link to="/match"><button>Crear Partidos</button></Link> 
             : null}   
             <button>Partidos</button>   
             <button>Jugadores</button>

@@ -9,6 +9,7 @@ import Signup from './pages/auth/Signup'
 import Login from './pages/auth/Login'
 import Calendario from './pages/Calendario'
 import OnlyPrivate from './components/OnlyPrivate'
+import AddMatchCard from './pages/AddMatchCard'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/match" element={<OnlyPrivate> <AddMatchCard /> </OnlyPrivate>}  />
             <Route path="/calendario" element={<OnlyPrivate> <Calendario /> </OnlyPrivate>} />
          </Routes>
       

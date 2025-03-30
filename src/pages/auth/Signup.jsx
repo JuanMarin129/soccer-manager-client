@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios'
+//import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import service from '../../services/config.services';
 
 
 function Signup() {
@@ -30,7 +31,8 @@ function Signup() {
 
         //console.log("Usuario registrado")
 
-        await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`, {
+        //await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`, {
+        await service.post(`/auth/signup`, {
           nombre: nombre,
           apellidos: apellidos,
           email: email,
