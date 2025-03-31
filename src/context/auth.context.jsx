@@ -25,7 +25,7 @@ function AuthWrapper(props) {
 
         try {
             
-            //const authToken = localStorage.getItem("authToken")
+            const authToken = localStorage.getItem("authToken")
             //const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/auth/verify`, {
             const response = await service.get(`/auth/verify`, {
                 headers: {

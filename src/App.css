@@ -14,6 +14,10 @@ a {
   justify-content: space-around;
 }
 
+#navbar button {
+  margin: 5px;
+}
+
 .formularioCSS {
   display: flex;
   flex-direction: column;
@@ -44,4 +48,19 @@ a {
 
 .formularioMatchCard input {
   margin-bottom: 20px;
+}
+
+.ShowMatchesCSS {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ShowMatchesCSS h3,p {
+  width: 20%;
+  margin: 5px;
+}
+
+.ShowMatchesCSS button {
+  margin: 5px;
 }
