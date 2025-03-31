@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function MatchCard(props) {
 
@@ -11,7 +12,7 @@ function MatchCard(props) {
         <p>{props.eachMatch.fecha}</p>
         <p>{goles}</p>
         <p>{props.eachMatch.resultado}</p>
-        <button>Ficha Partido</button>
+        <Link to={`/match/${props.eachMatch._id}`} ><button>Ficha Partido</button></Link> 
         <button>Comentarios</button>
     </div>
   )

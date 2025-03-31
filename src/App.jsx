@@ -11,6 +11,8 @@ import Calendario from './pages/Calendario'
 import OnlyPrivate from './components/OnlyPrivate'
 import AddMatchCard from './pages/AddMatchCard'
 import ShowMatches from './pages/ShowMatches'
+import EditMatch from './pages/EditMatch'
+import MatchDetails from './pages/MatchDetails'
 
 function App() {
 
@@ -25,6 +27,7 @@ function App() {
             <Route path="/match" element={<OnlyPrivate> <AddMatchCard /> </OnlyPrivate>}  />
             <Route path="/calendario" element={<OnlyPrivate> <Calendario /> </OnlyPrivate>} />
             <Route path="/show-matches" element={<OnlyPrivate> <ShowMatches /> </OnlyPrivate>} />
+            <Route path="/match/:matchID" element={<OnlyPrivate> <MatchDetails /> </OnlyPrivate>} />
          </Routes>
       
     </>
