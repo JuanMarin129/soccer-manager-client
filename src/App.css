@@ -50,17 +50,17 @@ a {
   margin-bottom: 20px;
 }
 
-.ShowMatchesCSS {
+.showMatchesCSS {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
 }
 
-.ShowMatchesCSS h3,p {
+.showMatchesCSS h3,p {
   width: 17%;
   margin: 5px;
 }
 
-.ShowMatchesCSS button {
+.showMatchesCSS button {
   margin: 5px;
 }

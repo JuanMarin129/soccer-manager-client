@@ -7,12 +7,12 @@ function MatchCard(props) {
 
   console.log(props.eachMatch)
   return (
-    <div className="ShowMatchesCSS"> 
+    <div className="showMatchesCSS"> 
         <p>{props.eachMatch.equipoRival}</p>
         <p>{props.eachMatch.fecha}</p>
         <p>{goles}</p>
         <p>{props.eachMatch.resultado}</p>
-        <Link to={`/match/${props.eachMatch._id}`} ><button>Ficha Partido</button></Link> 
+        <Link to={`/match-details/${props.eachMatch._id}`} ><button>Ficha Partido</button></Link> 
         <button>Comentarios</button>
     </div>
   )

@@ -30,7 +30,7 @@ function ShowMatches() {
     console.log(listMatches)
     return (
     <div>
-        <div className="ShowMatchesCSS">
+        <div className="showMatchesCSS">
             <h3>Rival</h3>
             <h3>Fecha</h3>
             <h3>Goles</h3>

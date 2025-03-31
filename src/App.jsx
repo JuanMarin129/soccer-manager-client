@@ -27,7 +27,8 @@ function App() {
             <Route path="/match" element={<OnlyPrivate> <AddMatchCard /> </OnlyPrivate>}  />
             <Route path="/calendario" element={<OnlyPrivate> <Calendario /> </OnlyPrivate>} />
             <Route path="/show-matches" element={<OnlyPrivate> <ShowMatches /> </OnlyPrivate>} />
-            <Route path="/match/:matchID" element={<OnlyPrivate> <MatchDetails /> </OnlyPrivate>} />
+            <Route path="/match-details/:matchID" element={<OnlyPrivate> <MatchDetails /> </OnlyPrivate>} />
+            <Route path="/edit-match/:matchID" element={<OnlyPrivate> <EditMatch /> </OnlyPrivate>} />
          </Routes>
       
     </>
