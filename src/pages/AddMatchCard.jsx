@@ -9,7 +9,7 @@ function AddMatchCard() {
     const matchDefault = {
         competicion: "",
         fecha: Date.now(),
-        hora: "00:00",
+        hora: "",
         jornada: "",
         estadio: "",
         equipoRival: "",
@@ -22,10 +22,10 @@ function AddMatchCard() {
         tarjetasAmarillas: 0,
         tarjetasRojas: 0,
         posesionBalon: 1,
-        transicionesAtaqueDefensa: 0,
-        transicionesDefensaAtaque: 0,
+        transicionAtaqueDefensa: 0,
+        transicionDefensaAtaque: 0,
         cornersAFavor: 0,
-        cornesEnContra: 0,
+        cornersEnContra: 0,
         golesBalonParado: 0,
         enlacePartido: ""
     }
@@ -77,7 +77,12 @@ function AddMatchCard() {
             console.log("Esto es requestBody")
             console.log(requestBody)
 
-            await service.post('/match', requestBody)
+            await service.post('/match', {
+                competicion: dataMatch.competicion,
+                fecha: dataMatch.fecha,
+                equipoRival: dataMatch.equipoRival
+
+            })
 
             //navigate("/");
             
@@ -94,8 +99,8 @@ function AddMatchCard() {
             <form className="formularioMatchCard" onSubmit={handleSubmit}> 
                 <label>Competiciones</label>
                 <select id="competiciones" name="competiciones" onChange={handleChange}>
-                    <option value="Primera Division">Primera División</option>
-                    <option value="Segunda Division">Segunda División</option>
+                    <option value="Primera División">Primera División</option>
+                    <option value="Segunda División">Segunda División</option>
                     <option value="Primera RFEF">Primera RFEF</option>
                     <option value="Segunda RFEF">Segunda RFEF</option>
                     <option value="Tercera RFEF">Tercera RFEF</option>
