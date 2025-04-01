@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import service from '../services/config.services'
 import { useNavigate } from 'react-router-dom'
 
@@ -7,18 +7,18 @@ function AddMatchCard() {
  
     // Creamos la esctructura inicial de la data del Partido
     const matchDefault = {
-        competicion: "",
+        competicion: "Primera División",
         fecha: Date.now(),
         hora: "",
-        jornada: "",
-        estadio: "",
-        equipoRival: "",
-        jugarComo: "",
+        jornada: "Jornada 01",
+        estadio: "Los Arcos",
+        equipoRival: "Racing Patata",
+        jugarComo: "Local",
         //entrenador: {},
-        //jugadores: [],
+        jugadores: [],
         golesAnotados: 0,
         golesEncajados: 0,
-        resultado: "",
+        resultado: "Victoria",
         tarjetasAmarillas: 0,
         tarjetasRojas: 0,
         posesionBalon: 1,
@@ -30,12 +30,31 @@ function AddMatchCard() {
         enlacePartido: ""
     }
 
-    const [dataMatch, setDataMatch] = useState({...matchDefault})
+    const [dataMatch, setDataMatch] = useState(matchDefault)
+    const [listPlayer, setListPlayer] = useState(null)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getPlayers();
+    },[])
+
+    const getPlayers = async () => {
+        try {
+            const response = await service.get("/user")
+            setListPlayer(response.data)
+            console.log(response.data)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     const handleChange = (e) => {
         //console.log(e);
         let cloneMatch = dataMatch;
+        cloneMatch[e.target.name] = e.target.value
+        /*
         if(e.target.name === "competiciones") {
             cloneMatch.competicion = e.target.value
             console.log(cloneMatch.competicion)
@@ -61,6 +80,7 @@ function AddMatchCard() {
         if(e.target.name === "resultado") {
             cloneMatch.resultado = e.target.value
         }
+            */
         setDataMatch(cloneMatch)
         console.log(cloneMatch)
     }
@@ -74,19 +94,19 @@ function AddMatchCard() {
                 ...dataMatch,
             };
 
-            console.log("Esto es requestBody")
-            console.log(requestBody)
+            console.log("Esto es dataMatch")
+            console.log(dataMatch)
 
-            await service.post('/match', {
-                competicion: dataMatch.competicion,
+            await service.post('/match', dataMatch)
+              /*  competicion: dataMatch.competicion,
                 fecha: dataMatch.fecha,
                 hora: dataMatch.hora,
                 equipoRival: dataMatch.equipoRival,
                 jugarComo: dataMatch.jugarComo,
                 golesAnotados: dataMatch.golesAnotados,
                 golesEncajados: dataMatch.golesEncajados,
-                resultado: dataMatch.resultado
-            })
+                resultado: dataMatch.resultado */
+            
 
             navigate("/show-matches");
             
@@ -95,14 +115,21 @@ function AddMatchCard() {
         }
     }
 
+    // Cláusula de Guardia
+    if (listPlayer === null) {
+        return <h3>Espere por favor... estamos trayendo la data</h3>
+    }
+    
     console.log(dataMatch)
+
 
     return (
         <div>
             <h2>Añadir Ficha del Partido</h2>
             <form className="formularioMatchCard" onSubmit={handleSubmit}> 
                 <label>Competiciones</label>
-                <select id="competiciones" name="competiciones" onChange={handleChange}>
+                <select id="competiciones" name="competicion" onChange={handleChange}>
+                    <option value="">-- Seleccione Competición --</option>
                     <option value="Primera División">Primera División</option>
                     <option value="Segunda División">Segunda División</option>
                     <option value="Primera RFEF">Primera RFEF</option>
@@ -115,13 +142,18 @@ function AddMatchCard() {
                     <option value="Liga Preferente">Liga Preferente</option>
                 </select>
                 <label>Fecha</label>
-                <input type="date" id="FechaPartido" name="fechaPartido" onChange={handleChange} />
+                <input type="date" id="FechaPartido" name="fecha" onChange={handleChange} />
                 <label>Hora</label>
-                <input type="text" id="HoraPartido" name="horaPartido" onChange={handleChange}/>
+                <input type="text" id="HoraPartido" name="hora" onChange={handleChange}/>
+                <label>Jornada</label>
+                <input type="text" id="jornada" name="jornada" onChange={handleChange}/>
+                <label>Estadio</label>
+                <input type="text" id="jornada" name="estadio" onChange={handleChange}/>
                 <label>Equipo Rival</label>
                 <select id="EquipoRival" name="equipoRival"  onChange={handleChange}>
+                    <option value="">-- Seleccione Equipo Rival --</option>
                     <option value="London FC">London FC</option>
-                    <option value="Atletico Middleware">Atlético Middleware</option>
+                    <option value="Atlético Middleware">Atlético Middleware</option>
                     <option value="Samuel Team">Samuel Team</option>
                     <option value="Santos Kurt">Santus Kurt</option>
                     <option value="Njo Njo Team">Njo Njo Team</option>
@@ -138,6 +170,7 @@ function AddMatchCard() {
                 </select>
                 <label>Jugar como</label>
                 <select id="JugarComo" name="jugarComo"  onChange={handleChange}>
+                    <option value="">-- Elija si jugó fuera o en casa --</option>
                     <option value="Local">Local</option>
                     <option value="Visitante">Visitante</option>
                 </select>
@@ -147,10 +180,20 @@ function AddMatchCard() {
                 <input type="number" id="GolesEncajados" name="golesEncajados"  onChange={handleChange} />
                 <label>Resultado</label>
                 <select id="Resultado" name="resultado"  onChange={handleChange}>
+                    <option value="">-- Seleccione Resultado --</option>
                     <option value="Victoria">Victoria</option>
                     <option value="Empate">Empate</option>
                     <option value="Derrota">Derrota</option>
                 </select>
+                <label>Jugadores</label>
+                <select id="jugadores" name="jugadores" multiple onChange={handleChange}>
+                    {listPlayer.map((eachPlayer) => {
+                        return (
+                            <option value={eachPlayer._id}>{eachPlayer.nombre} {eachPlayer.apellidos}</option>
+                        )
+                    })}
+                </select>
+                
                 <button type="submit">Crear Ficha Partido</button>
             </form>
         </div>
@@ -177,6 +220,9 @@ export default AddMatchCard
         <option value=""></option>
     </select>
 
-
+ <label>Pepito</label>
+                <input type="checkbox" />
+                <label>Juanito</label>
+                <input type="checkbox" /> 
 
 */
