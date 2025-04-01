@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import service from '../services/config.services';
 import { useParams } from 'react-router-dom';
 import CommentCard from '../components/CommentCard';
+import { Link } from 'react-router-dom';
 
 function ShowComments() {
     
@@ -40,6 +41,7 @@ function ShowComments() {
                 eachComment={eachComment} />
             )
         })}
+        <Link to={`/add-comment/${parametrosDinamicos.matchID}`}><button>Añadir Comentario</button></Link> 
     </div>
   )
 }
