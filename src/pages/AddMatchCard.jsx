@@ -80,11 +80,15 @@ function AddMatchCard() {
             await service.post('/match', {
                 competicion: dataMatch.competicion,
                 fecha: dataMatch.fecha,
-                equipoRival: dataMatch.equipoRival
-
+                hora: dataMatch.hora,
+                equipoRival: dataMatch.equipoRival,
+                jugarComo: dataMatch.jugarComo,
+                golesAnotados: dataMatch.golesAnotados,
+                golesEncajados: dataMatch.golesEncajados,
+                resultado: dataMatch.resultado
             })
 
-            //navigate("/");
+            navigate("/show-matches");
             
         } catch (error) {
             console.log(error)
