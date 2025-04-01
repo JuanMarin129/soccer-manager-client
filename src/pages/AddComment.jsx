@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import service from '../services/config.services';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 
 function AddComment() {
@@ -9,9 +9,9 @@ function AddComment() {
     const [visibility, setVisibility] = useState("Privado")
     const { loggedUserId, userRole } = useContext(AuthContext)
     const parametrosDinamicos = useParams();
-
-   
+    const navigate = useNavigate();
     
+
     const handleText = (e) => setTextComment(e.target.value);
 
     const handleSubmit = async (e) => {
@@ -25,7 +25,8 @@ function AddComment() {
                 creator: loggedUserId,
                 visibilidad: visibility
             })
-            console.log("Creado el comentario con éxito")
+            //console.log("Creado el comentario con éxito")
+            navigate(`/show-comments/${parametrosDinamicos.matchID}`)
             
         } catch (error) {
             console.log(error)
