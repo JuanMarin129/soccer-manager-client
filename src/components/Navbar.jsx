@@ -34,8 +34,8 @@ function Navbar() {
             {userRole === "entrenador" ?   
             <Link to="/match"><button>Crear Partidos</button></Link> 
             : null}   
-            <Link to="/show-matches"> <button>Partidos</button></Link>  
-            <button>Jugadores</button>
+            <Link to="/show-matches"><button>Partidos</button></Link>  
+            <Link to="/show-players"><button>Jugadores</button></Link>
             <Link onClick={handleLogout}><button>Cerrar Sesión</button></Link>
           </>  
         :

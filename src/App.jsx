@@ -16,6 +16,7 @@ import MatchDetails from './pages/MatchDetails'
 import ShowComments from './pages/ShowComments'
 import AddComment from './pages/AddComment'
 import EditComment from './pages/EditComment'
+import ShowPlayers from './pages/ShowPlayers'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/show-comments/:matchID" element={<OnlyPrivate> <ShowComments /> </OnlyPrivate>} />
             <Route path="/add-comment/:matchID" element={<OnlyPrivate> <AddComment /> </OnlyPrivate>} />
             <Route path="/edit-comment/:commentID" element={<OnlyPrivate> <EditComment />  </OnlyPrivate>} />
+            <Route path="/show-players" element={<OnlyPrivate> <ShowPlayers /> </OnlyPrivate>} />
          </Routes>
       
     </>

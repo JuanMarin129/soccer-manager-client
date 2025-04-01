@@ -22,7 +22,7 @@ function AddComment() {
             await service.post('/comment', {
                 texto: textComment,
                 partido: parametrosDinamicos.matchID,
-                creator: loggedUserId,
+                //creator: loggedUserId,
                 visibilidad: visibility
             })
             //console.log("Creado el comentario con éxito")

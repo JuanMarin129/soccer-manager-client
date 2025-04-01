@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 import service from '../services/config.services'
 import { useNavigate } from 'react-router-dom'
 
-
-function AddMatchCard() {
- 
-    // Creamos la esctructura inicial de la data del Partido
-    const matchDefault = {
+const matchDefault = {
         competicion: "Primera División",
         fecha: Date.now(),
         hora: "",
@@ -30,8 +26,15 @@ function AddMatchCard() {
         enlacePartido: ""
     }
 
+function AddMatchCard() {
+ 
+    // Creamos la esctructura inicial de la data del Partido
+    
+
     const [dataMatch, setDataMatch] = useState(matchDefault)
     const [listPlayer, setListPlayer] = useState(null)
+    const listDay = [];
+    const listStadium = ["Martínez Valero", "Díez Iborra", "Antonio Puchades", "Manolo Maciá", "La Magdalena", "Nuevo Pepico Amat", "Mestalla", "La Rosaleda", "Metropolitano", "Riazor", "Las Gaunas", "Monumental de Maturín", "Pachencho", "Polideportivo Pueblo Nuevo", "Olímpico de la UCV", "Brígido Iriarte", "Sánchez Pizjuan", "San Mamés", "Montilivi", "El Regit", "La Murta", "Los Arcos", "San Gregorio", "Gerardo Salvador", "Vicent Morera"]
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -40,7 +43,7 @@ function AddMatchCard() {
 
     const getPlayers = async () => {
         try {
-            const response = await service.get("/user")
+            const response = await service.get("/user/players")
             setListPlayer(response.data)
             console.log(response.data)
             
@@ -51,38 +54,19 @@ function AddMatchCard() {
 
 
     const handleChange = (e) => {
-        //console.log(e);
-        let cloneMatch = dataMatch;
-        cloneMatch[e.target.name] = e.target.value
-        /*
-        if(e.target.name === "competiciones") {
-            cloneMatch.competicion = e.target.value
-            console.log(cloneMatch.competicion)
+        //console.log(e); 
+        
+        let cloneMatch = {...dataMatch}
+        if(e.target.name === "jugadores") {
+            
+            //cloneMatch[e.target.name] = new Array(uniquePlayers)
+            let selectedPlayers = Array.from(e.target.selectedOptions).map((option) => option.value)
+            let uniquePlayers = new Set(selectedPlayers)
+            cloneMatch[e.target.name] = Array.from(uniquePlayers)
+        } else {
+            cloneMatch[e.target.name] = e.target.value
         }
-        if(e.target.name === "fechaPartido") {
-            cloneMatch.fecha = e.target.value
-        }
-        if(e.target.name === "horaPartido") {
-            cloneMatch.hora = e.target.value
-        }
-        if(e.target.name === "equipoRival") {
-            cloneMatch.equipoRival = e.target.value
-        }
-        if(e.target.name === "jugarComo") {
-            cloneMatch.jugarComo = e.target.value
-        }
-        if(e.target.name === "golesAnotados") {
-            cloneMatch.golesAnotados = parseInt(e.target.value)
-        }
-        if(e.target.name === "golesEncajados") {
-            cloneMatch.golesEncajados = parseInt(e.target.value)
-        }
-        if(e.target.name === "resultado") {
-            cloneMatch.resultado = e.target.value
-        }
-            */
         setDataMatch(cloneMatch)
-        console.log(cloneMatch)
     }
 
     const handleSubmit = async (e) => {
@@ -90,9 +74,7 @@ function AddMatchCard() {
 
         // Contactar al Back End para crear la ficha del partido. Con requestBody le pasamos el objeto con todos los datos de dataMatch
         try {
-            const requestBody = {
-                ...dataMatch,
-            };
+
 
             console.log("Esto es dataMatch")
             console.log(dataMatch)
@@ -120,8 +102,14 @@ function AddMatchCard() {
         return <h3>Espere por favor... estamos trayendo la data</h3>
     }
     
-    console.log(dataMatch)
-
+    const createDays = () => {
+        for(let i=1; i<=30; i++) {
+            let day = i.toString().padStart(2,'0')
+            let stringDay = "Jornada " + day;
+            listDay.push(stringDay)
+        }
+    }
+    createDays();
 
     return (
         <div>
@@ -146,9 +134,21 @@ function AddMatchCard() {
                 <label>Hora</label>
                 <input type="text" id="HoraPartido" name="hora" onChange={handleChange}/>
                 <label>Jornada</label>
-                <input type="text" id="jornada" name="jornada" onChange={handleChange}/>
+                <select id="jornada" name="jornada" onChange={handleChange}>
+                    <option value="">-- Seleccione Jornada --</option>
+                    {listDay.map((eachDay) => {
+                        return <option value={eachDay}>{eachDay}</option>
+                    })}
+                </select>
+                {/*<input type="text" id="jornada" name="jornada" onChange={handleChange}/>*/}
                 <label>Estadio</label>
-                <input type="text" id="jornada" name="estadio" onChange={handleChange}/>
+                <select id="estadio" name="estadio" onChange={handleChange}>
+                    <option value="">-- Seleccione Estadio --</option>
+                    {listStadium.map((eachStadium) => {
+                        return <option value={eachStadium}>{eachStadium}</option>
+                    })}    
+                </select> 
+                {/*<input type="text" id="jornada" name="estadio" onChange={handleChange}/>*/}
                 <label>Equipo Rival</label>
                 <select id="EquipoRival" name="equipoRival"  onChange={handleChange}>
                     <option value="">-- Seleccione Equipo Rival --</option>
@@ -158,15 +158,15 @@ function AddMatchCard() {
                     <option value="Santos Kurt">Santus Kurt</option>
                     <option value="Njo Njo Team">Njo Njo Team</option>
                     <option value="Racing Patata">Racing Patata</option>
-                    <option value="Atletico Patata">Atlético de Patata</option>
+                    <option value="Atlético Patata">Atlético de Patata</option>
                     <option value="Real Banana CF">Real Banana CF</option>
                     <option value="Caracas FC">Caracas FC</option>
                     <option value="Zulia FC">Zulia FC</option>
-                    <option value="Deportivo Tachira">Deportivo Táchira</option>
-                    <option value="Estudiantes de Merida ">Estudiantes de Mérida</option>
+                    <option value="Deportivo Táchira">Deportivo Táchira</option>
+                    <option value="Estudiantes de Mérida ">Estudiantes de Mérida</option>
                     <option value="Club Azul">Club Azul</option>
                     <option value="Tigres de la UANL">Tigres de la UANL</option>
-                    <option value="Queretaro FC">Querétaro FC</option>
+                    <option value="Querétaro FC">Querétaro FC</option>
                 </select>
                 <label>Jugar como</label>
                 <select id="JugarComo" name="jugarComo"  onChange={handleChange}>
@@ -189,7 +189,7 @@ function AddMatchCard() {
                 <select id="jugadores" name="jugadores" multiple onChange={handleChange}>
                     {listPlayer.map((eachPlayer) => {
                         return (
-                            <option value={eachPlayer._id}>{eachPlayer.nombre} {eachPlayer.apellidos}</option>
+                            <option key={eachPlayer._id} value={eachPlayer._id}>{eachPlayer.nombre} {eachPlayer.apellidos}</option>
                         )
                     })}
                 </select>

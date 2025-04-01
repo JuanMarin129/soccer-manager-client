@@ -46,6 +46,7 @@ function MatchDetails() {
         return <h3>Espere por favor... estamos trayendo la data</h3>
     }
   
+    console.log(dataMatch.jugadores)
     return (
     <div> 
         <h1>Ficha del Partido</h1>
@@ -62,6 +63,14 @@ function MatchDetails() {
             <p>Resultado: {dataMatch.resultado}</p>
             <p>Goles Anotados: {dataMatch.golesAnotados}</p>
             <p>Goles Encajados: {dataMatch.golesEncajados}</p>
+        </div>
+        <div style={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
+            <h3>Lista de jugadores:</h3>
+            {dataMatch.jugadores.map((eachPlayer, index) => {
+                return (
+                    <p key={index}>{eachPlayer.nombre} {eachPlayer.apellidos}</p>
+                )
+            })}
         </div>
  
        
