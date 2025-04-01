@@ -13,7 +13,7 @@ function MatchCard(props) {
         <p>{goles}</p>
         <p>{props.eachMatch.resultado}</p>
         <Link to={`/match-details/${props.eachMatch._id}`} ><button>Ficha Partido</button></Link> 
-        <button>Comentarios</button>
+        <Link to={`/show-comments/${props.eachMatch._id}`}><button>Comentarios</button></Link> 
     </div>
   )
 }

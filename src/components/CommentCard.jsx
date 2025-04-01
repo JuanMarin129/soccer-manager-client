@@ -1,8 +1,12 @@
 import React from 'react'
 
-function CommentCard() {
+function CommentCard(props) {
+  
+  console.log(props.eachComment)
   return (
-    <div>CommentCard</div>
+    <div id="commentCardCSS">
+      <p>{props.eachComment.texto} </p>
+    </div>
   )
 }
 

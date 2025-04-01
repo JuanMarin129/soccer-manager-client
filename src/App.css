@@ -64,3 +64,13 @@ a {
 .showMatchesCSS button {
   margin: 5px;
 }
+
+#commentCardCSS {
+  display: flex;
+  border: solid;
+  margin: 10px;
+}
+
+#commentCardCSS p {
+  width: 100%;
+}
