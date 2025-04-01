@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import service from '../services/config.services';
 
 function MatchDetails() {
   
     const [dataMatch, setDataMatch] = useState(null)
     const parametrosDinamicos = useParams()
+    const navigate = useNavigate();
 
     useEffect(() => {
         getMatch();
@@ -23,6 +24,20 @@ function MatchDetails() {
         }
     }
 
+    const deleteMatch = async (e) => {
+        let textWarning = "¿Estás seguro de eliminar la ficha del partido?"
+        if(confirm(textWarning) == true ) {
+            e.preventDefault()
+            try {
+                await service.delete(`/match/${parametrosDinamicos.matchID}`)
+                console.log("Ficha ELIMINADA")
+                navigate("/show-matches");
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
     console.log(parametrosDinamicos)
     console.log(dataMatch)
 
@@ -35,7 +50,7 @@ function MatchDetails() {
     <div> 
         <h1>Ficha del Partido</h1>
         <Link to={`/edit-match/${parametrosDinamicos.matchID}`}><button>Editar Ficha Partido</button></Link>  
-        <button>Eliminar Ficha Partido</button>
+        <button onClick={deleteMatch}>Eliminar Ficha Partido</button>
         <h3>Datos</h3>
         <div className="showMatchesCSS">
             <p>Competición: {dataMatch.competicion}</p>
