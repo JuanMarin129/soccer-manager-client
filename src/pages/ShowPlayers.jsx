@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import service from '../services/config.services';
+import UserCard from '../components/UserCard';
 
 function ShowPlayers() {
 
@@ -27,8 +28,12 @@ function ShowPlayers() {
   return (
     <div>
         <h1>Jugadores</h1>
-        {listPlayers.map((eachPlayer) => {
-          return <p key={eachPlayer._id}>{eachPlayer.nombre} {eachPlayer.apellidos}</p>
+        {listPlayers.map((eachPlayer, index) => {
+          return (
+            <UserCard
+            key={index}
+            eachPlayer={eachPlayer} />
+          )
         })}
 
     </div>

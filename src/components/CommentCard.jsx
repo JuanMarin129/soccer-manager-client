@@ -29,9 +29,14 @@ function CommentCard(props) {
   //console.log(props.eachComment)
   return (
     <div id="commentCardCSS">
-      <Link to={`/edit-comment/${props.eachComment._id}`}><button>Editar Comentario</button></Link> 
-      <button onClick={deleteComment}>Eliminar Comentario</button>
-      <p>{props.eachComment.texto} </p>
+      <div id="commentCardBtn">
+        <Link to={`/edit-comment/${props.eachComment._id}`}><button>Editar Comentario</button></Link> 
+        <button onClick={deleteComment}>Eliminar Comentario</button>
+      </div>
+      <fieldset>
+        <legend>{props.eachComment.creator.nombre} {props.eachComment.creator.apellidos}</legend>
+        <p>{props.eachComment.texto} </p>
+      </fieldset>
     </div>
   )
 }

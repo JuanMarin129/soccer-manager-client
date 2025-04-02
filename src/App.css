@@ -67,10 +67,27 @@ a {
 
 #commentCardCSS {
   display: flex;
+  flex-direction: column;
   border: solid;
   margin: 10px;
 }
 
 #commentCardCSS p {
   width: 100%;
+}
+
+#commentCardBtn {
+  display: flex;
+  justify-content: end;
+}
+
+#userCardCSS {
+  display: flex;
+  border: solid;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+#userCardCSS p {
+  width: 80%;
 }
