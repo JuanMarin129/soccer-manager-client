@@ -20,6 +20,8 @@ import EditComment from './pages/EditComment'
 import ShowPlayers from './pages/ShowPlayers'
 import UserDetails from './pages/UserDetails'
 import EditUser from './pages/EditUser'
+import UserProfile from './pages/UserProfile'
+import EditProfile from './pages/EditProfile'
 
 function App() {
 
@@ -42,6 +44,8 @@ function App() {
             <Route path="/show-players" element={<OnlyPrivate> <ShowPlayers /> </OnlyPrivate>} />
             <Route path="/user-details/:userID" element={<OnlyAdmin> <UserDetails />  </OnlyAdmin>} />
             <Route path="/user-edit/:userID" element={<OnlyPrivate> <EditUser /> </OnlyPrivate>} />
+            <Route path="/user/profile" element={<OnlyPrivate> <UserProfile /> </OnlyPrivate>} />
+            <Route path="/user/edit-profile" element={<OnlyPrivate> <EditProfile /> </OnlyPrivate>} />
          </Routes>
       
     </>

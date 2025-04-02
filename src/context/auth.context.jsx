@@ -11,6 +11,7 @@ function AuthWrapper(props) {
 
     const [ isLoggedIn, setIsLoggedIn] = useState(false);
     const [ loggedUserId, setLoggedUserId] = useState(null);
+    const [ nameUser, setNameUser] = useState(null);
     const [userRole, setUserRole] = useState(null);
     const [isAuthenticatingUser, setIsAuthenticatingUser] = useState(true);
 
@@ -37,6 +38,7 @@ function AuthWrapper(props) {
             // Si la llamada llega hasta aquí, significa que el usuario fue correctamente validado
             setIsLoggedIn(true)
             setLoggedUserId(response.data.payload._id)
+            setNameUser(response.data.payload.nombre)
             setUserRole(response.data.payload.role)
             setIsAuthenticatingUser(false)
 
@@ -44,6 +46,7 @@ function AuthWrapper(props) {
             console.log(error)
             setIsLoggedIn(false)
             setLoggedUserId(null)
+            setNameUser(null)
             setUserRole(null)
             setIsAuthenticatingUser(false)
             
@@ -53,6 +56,7 @@ function AuthWrapper(props) {
     const passedContext = {
         isLoggedIn,
         loggedUserId,
+        nameUser,
         userRole,
         authenticateUser
     }

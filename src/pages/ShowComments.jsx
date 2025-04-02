@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import service from '../services/config.services';
 import { useParams } from 'react-router-dom';
 import CommentCard from '../components/CommentCard';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/auth.context';
 
 function ShowComments() {
     
     const [listComments, setListComments] = useState(null);
     const parametrosDinamicos = useParams();
+    const { loggedUserId } = useContext(AuthContext)
+   
 
     useEffect(() => {
         getComments();
@@ -23,13 +26,20 @@ function ShowComments() {
             console.log(error)
         }
     }
-  
 
+   
     // Cláusula de Guardia
     if(listComments === null) {
         return <h3>Espere por favor. Conectando con la data...</h3>
     }
 
+
+    // Comprobamos si el usuario ya puso un comentario en este partido
+    let userCommented = listComments.some((eachComment) => {
+        return eachComment.creator._id === loggedUserId
+    })
+
+    console.log(userCommented);
 
     return (
     <div>
@@ -41,7 +51,9 @@ function ShowComments() {
                 eachComment={eachComment} />
             )
         })}
-        <Link to={`/add-comment/${parametrosDinamicos.matchID}`}><button>Añadir Comentario</button></Link> 
+        {userCommented === false ?
+        <Link to={`/add-comment/${parametrosDinamicos.matchID}`}><button>Añadir Comentario</button></Link>
+        : null }
     </div>
   )
 }

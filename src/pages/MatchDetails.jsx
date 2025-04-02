@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import service from '../services/config.services';
+import { AuthContext } from '../context/auth.context';
 
 function MatchDetails() {
   
     const [dataMatch, setDataMatch] = useState(null)
+    const { userRole } = useContext(AuthContext)
     const parametrosDinamicos = useParams()
     const navigate = useNavigate();
 
@@ -50,8 +52,12 @@ function MatchDetails() {
     return (
     <div> 
         <h1>Ficha del Partido</h1>
+        {userRole === "entrenador" ?
+        <>
         <Link to={`/edit-match/${parametrosDinamicos.matchID}`}><button>Editar Ficha Partido</button></Link>  
         <button onClick={deleteMatch}>Eliminar Ficha Partido</button>
+        </>
+        : null }
         <h3>Datos</h3>
         <div className="showMatchesCSS">
             <p>Competición: {dataMatch.competicion}</p>

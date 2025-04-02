@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import service from '../services/config.services'
+import { AuthContext } from '../context/auth.context'
 
 function CommentCard(props) {
+
+  const { userRole } = useContext(AuthContext)
 
   const navigate = useNavigate()
 
@@ -30,8 +33,12 @@ function CommentCard(props) {
   return (
     <div id="commentCardCSS">
       <div id="commentCardBtn">
-        <Link to={`/edit-comment/${props.eachComment._id}`}><button>Editar Comentario</button></Link> 
-        <button onClick={deleteComment}>Eliminar Comentario</button>
+        {userRole === "entrenador" ?
+        <>
+          <Link to={`/edit-comment/${props.eachComment._id}`}><button>Editar Comentario</button></Link> 
+          <button onClick={deleteComment}>Eliminar Comentario</button>
+        </>
+        : null }
       </div>
       <fieldset>
         <legend>{props.eachComment.creator.nombre} {props.eachComment.creator.apellidos}</legend>
