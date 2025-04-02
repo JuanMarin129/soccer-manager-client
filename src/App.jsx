@@ -9,6 +9,7 @@ import Signup from './pages/auth/Signup'
 import Login from './pages/auth/Login'
 import Calendario from './pages/Calendario'
 import OnlyPrivate from './components/OnlyPrivate'
+import OnlyAdmin from './components/OnlyAdmin'
 import AddMatchCard from './pages/AddMatchCard'
 import ShowMatches from './pages/ShowMatches'
 import EditMatch from './pages/EditMatch'
@@ -18,6 +19,7 @@ import AddComment from './pages/AddComment'
 import EditComment from './pages/EditComment'
 import ShowPlayers from './pages/ShowPlayers'
 import UserDetails from './pages/UserDetails'
+import EditUser from './pages/EditUser'
 
 function App() {
 
@@ -29,16 +31,17 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/match" element={<OnlyPrivate> <AddMatchCard /> </OnlyPrivate>}  />
+            <Route path="/match" element={<OnlyAdmin> <AddMatchCard /> </OnlyAdmin>}  />
             <Route path="/calendario" element={<OnlyPrivate> <Calendario /> </OnlyPrivate>} />
             <Route path="/show-matches" element={<OnlyPrivate> <ShowMatches /> </OnlyPrivate>} />
             <Route path="/match-details/:matchID" element={<OnlyPrivate> <MatchDetails /> </OnlyPrivate>} />
-            <Route path="/edit-match/:matchID" element={<OnlyPrivate> <EditMatch /> </OnlyPrivate>} />
+            <Route path="/edit-match/:matchID" element={<OnlyAdmin> <EditMatch /> </OnlyAdmin>} />
             <Route path="/show-comments/:matchID" element={<OnlyPrivate> <ShowComments /> </OnlyPrivate>} />
             <Route path="/add-comment/:matchID" element={<OnlyPrivate> <AddComment /> </OnlyPrivate>} />
             <Route path="/edit-comment/:commentID" element={<OnlyPrivate> <EditComment />  </OnlyPrivate>} />
             <Route path="/show-players" element={<OnlyPrivate> <ShowPlayers /> </OnlyPrivate>} />
-            <Route path="/user-details/:userID" element={<OnlyPrivate> <UserDetails />  </OnlyPrivate>} />
+            <Route path="/user-details/:userID" element={<OnlyAdmin> <UserDetails />  </OnlyAdmin>} />
+            <Route path="/user-edit/:userID" element={<OnlyPrivate> <EditUser /> </OnlyPrivate>} />
          </Routes>
       
     </>

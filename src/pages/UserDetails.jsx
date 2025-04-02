@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { data, useParams } from 'react-router-dom';
+import { data, Link, useParams } from 'react-router-dom';
 import service from '../services/config.services';
 
 
@@ -29,13 +29,18 @@ function UserDetails() {
         return <h3>Espere por favor... estamos trayendo la data</h3>
     }
   
+    console.log(dataUserProfile)
     return (
     <div>
         <h1>Ficha de Usuario</h1>
-        <p>{dataUserProfile.nombre}</p>
-        <p>{dataUserProfile.apellidos}</p>
-
-   
+        <p>{dataUserProfile.foto}</p>
+        <p>Nombre: {dataUserProfile.nombre}</p>
+        <p>Apellidos: {dataUserProfile.apellidos}</p>
+        <p>Email: {dataUserProfile.email}</p>
+        <p>Fecha de Nacimiento: {dataUserProfile.fechaNacimiento}</p>
+        <p>País de Nacionalidad: {dataUserProfile.PaisNacionalidad}</p>
+        <p>Equipo: {dataUserProfile.equipo}</p>
+        <Link to={`/user-edit/${parametrosDinamicos.userID}`} ><button>Editar Ficha Usuario</button></Link>
     </div>
   )
 }
