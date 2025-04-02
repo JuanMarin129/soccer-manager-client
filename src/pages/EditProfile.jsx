@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 function EditProfile() {
 
     const [dataUser, setDataUser] = useState(null)
+    const [imageUrl, setImageUrl] = useState(null); 
+    const [isUploading, setIsUploading] = useState(false); // for a loading animation effect
 
 
     useEffect(() => {
@@ -24,11 +26,51 @@ function EditProfile() {
     }
 
     const handleChange = (e) => {
-        let cloneUser = dataUser
+        let cloneUser = {...dataUser}
         cloneUser[e.target.name] = e.target.value 
         setDataUser(cloneUser)
         console.log(dataUser)
     }
+
+    // below function should be the only function invoked when the file type input changes => onChange={handleFileUpload}
+    const handleFileUpload = async (event) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+  
+    if (!event.target.files[0]) {
+      // to prevent accidentally clicking the choose file button and not selecting a file
+      return;
+    }
+  
+    setIsUploading(true); // to start the loading animation
+  
+    const uploadData = new FormData(); // images and other files need to be sent to the backend in a FormData
+    uploadData.append("image", event.target.files[0]);
+    //                   |
+    //     this name needs to match the name used in the middleware in the backend => uploader.single("image")
+  
+    try {
+      const response = await service.post("/upload", uploadData)
+      // !IMPORTANT: Adapt the request structure to the one in your proyect (services, .env, auth, etc...)
+  
+      console.log(response.data.imageUrl)
+      setImageUrl(response.data.imageUrl)
+      console.log(imageUrl)
+      //                          |
+      //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
+  
+      setIsUploading(false); // to stop the loading animation
+     
+      let cloneUser = {...dataUser}
+      cloneUser[event.target.name] = imageUrl
+      setDataUser(cloneUser)
+      console.log(dataUser)
+
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -62,8 +104,16 @@ function EditProfile() {
             <input type="date" name="fechaNacimiento" onChange={handleChange}  />
             <label>País de Nacionalidad:</label>
             <input type="text" name="PaisNacionalidad" onChange={handleChange} />
-            <label>Foto:</label>
-            <input type="text" name="foto" onChange={handleChange} />
+            <label>Foto: </label>
+            <input
+                type="file"
+                name="foto"
+                onChange={handleFileUpload}
+                disabled={isUploading}
+            />
+            {/* below disabled prevents the user from attempting another upload while one is already happening */}
+            {isUploading ? <h3>... uploading image</h3> : null}
+            {imageUrl ? (<div><img src={imageUrl} alt="img" width={200} /></div>) : null}
             <label>Teléfono:</label>
             <input type="text" name="telefono" onChange={handleChange} />
             <label>Equipo:</label>
