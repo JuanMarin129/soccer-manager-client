@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function EditProfile() {
 
     const [dataUser, setDataUser] = useState(null)
-    const [imageUrl, setImageUrl] = useState(null); 
+    //const [imageUrl, setImageUrl] = useState(null); 
     const [isUploading, setIsUploading] = useState(false); // for a loading animation effect
 
 
@@ -53,15 +53,18 @@ function EditProfile() {
       // !IMPORTANT: Adapt the request structure to the one in your proyect (services, .env, auth, etc...)
   
       console.log(response.data.imageUrl)
-      setImageUrl(response.data.imageUrl)
-      console.log(imageUrl)
       //                          |
       //     this is how the backend sends the image to the frontend => res.json({ imageUrl: req.file.path });
   
       setIsUploading(false); // to stop the loading animation
      
+      //setImageUrl(response.data.imageUrl)
+      //console.log(imageUrl)
+
+
+      // Lo añadimos a la Data del Usuario
       let cloneUser = {...dataUser}
-      cloneUser[event.target.name] = imageUrl
+      cloneUser[event.target.name] = response.data.imageUrl
       setDataUser(cloneUser)
       console.log(dataUser)
 
@@ -113,7 +116,7 @@ function EditProfile() {
             />
             {/* below disabled prevents the user from attempting another upload while one is already happening */}
             {isUploading ? <h3>... uploading image</h3> : null}
-            {imageUrl ? (<div><img src={imageUrl} alt="img" width={200} /></div>) : null}
+            {dataUser.foto ? (<div><img src={dataUser.foto} alt="img" width={200} /></div>) : null}
             <label>Teléfono:</label>
             <input type="text" name="telefono" onChange={handleChange} />
             <label>Equipo:</label>

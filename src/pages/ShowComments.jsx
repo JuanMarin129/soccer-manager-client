@@ -35,23 +35,26 @@ function ShowComments() {
 
 
     // Comprobamos si el usuario ya puso un comentario en este partido
-    let userCommented = listComments.some((eachComment) => {
+
+    let hasUserCommented = listComments.some((eachComment) => {
         return eachComment.creator._id === loggedUserId
     })
 
-    console.log(userCommented);
+    // Inicializamos la variable que controla que se muestra sólo UNA VEZ el comentario del usuario (si existiera)
+
 
     return (
     <div>
         <h1>Comentarios del partido</h1>
         {listComments.map((eachComment, index) => {
             return (
-                <CommentCard
+                <CommentCard 
                 key={index}
-                eachComment={eachComment} />
+                eachComment={eachComment}
+                />
             )
         })}
-        {userCommented === false ?
+        {hasUserCommented === false ?
         <Link to={`/add-comment/${parametrosDinamicos.matchID}`}><button>Añadir Comentario</button></Link>
         : null }
     </div>
