@@ -1,24 +1,72 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   background-image: url(background_01.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+ 
 }
+
 
 a {
   text-decoration: none;
 }
 
+
 #navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding-top: 10px;
+  color: white;
+}
+
+#navbar-menu-shadow {
+  position: absolute;
+  left: 0;
+  top: 2.5rem;
+  width: 15%;
+  height: calc(100vh - 3.5rem);
+  background-color: gray;
+  overflow: auto;
+  padding: 1.5rem 1.25rem;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+#navbar-menu-show {
+  position: absolute;
+  left: 0;
+  top: 2.5rem;
+  width: 15%;
+  height: calc(100vh - 3.5rem);
+  background-color: gray;
+  overflow: auto;
+  padding: 1.5rem 1.25rem;
+  opacity: 1;
+  transition: all 0.4s;
+}
+
+#navbar img {
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 #navbar button {
   margin: 5px;
+}
+
+#navBarProfile {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+#nav-toggle {
+  margin-right: 5px;
 }
 
 .formularioCSS {
@@ -116,3 +164,5 @@ a {
 #userCardCSS p {
   width: 80%;
 }
+
+
