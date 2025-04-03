@@ -49,6 +49,34 @@ a {
   transition: all 0.4s;
 }
 
+#btn-burguer-active {
+  opacity: 1;
+  position: absolute;
+  padding-top: 5px;
+  font-size: 1.5rem;
+  transition: all 0.4s;
+}
+
+#btn-burguer-shadow {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+#btn-close-active {
+  opacity: 1;
+  position: absolute;
+  right: 30px;
+  padding-bottom: 5px;
+  font-size: 1.5rem;
+  transition: all 0.4s;
+
+}
+
+#btn-close-shadow {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
 #navbar img {
   margin-left: 10px;
   margin-bottom: 10px;
@@ -66,7 +94,11 @@ a {
 }
 
 #nav-toggle {
-  margin-right: 5px;
+  position: relative;
+  width: 35%;
+  height: 30%;
+  margin-right: 0;
+  left: 20px;
 }
 
 .formularioCSS {

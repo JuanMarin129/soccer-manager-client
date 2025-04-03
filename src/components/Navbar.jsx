@@ -54,8 +54,9 @@ function Navbar() {
           </div>
         </div>
         <div id="nav-toggle">
-          <button onClick={toggleClass}><FiAlignJustify /></button>
-          <button><MdClose /></button>
+          <button id={isMenuActive ? "btn-burguer-shadow" : "btn-burguer-active"} onClick={() => toggleClass()}> <FiAlignJustify /> 
+          </button>
+          <button id={isMenuActive ? "btn-close-active" : "btn-close-shadow"} onClick={() => toggleClass()}><MdClose /></button>
         </div>
      </>
       :
