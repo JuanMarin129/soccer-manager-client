@@ -95,7 +95,7 @@ function EditProfile() {
 
 
  return (
-    <div>
+    <div className="profile-CSS">
 
         <h1>Editar Perfil Usuario</h1>
         <form className="formularioCSS" onSubmit={handleSubmit}>

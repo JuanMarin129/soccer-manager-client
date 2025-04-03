@@ -41,16 +41,18 @@ function Navbar() {
       ?
       <>
         <div id={isMenuActive ? "navbar-menu-show" : "navbar-menu-shadow"}>
-          <Link to="/calendario"><button>Calendario</button></Link>
-          {userRole === "entrenador" ?   
-          <Link to="/match"><button>Crear Partidos</button></Link> 
-          : null}   
-          <Link to="/show-matches"><button>Partidos</button></Link>  
-          <Link to="/show-players"><button>Jugadores</button></Link>
-          <Link onClick={handleLogout}><button>Cerrar Sesión</button></Link>
-          <div id="navBarProfile">
-            <p>Hola {nameUser}</p>
-            <Link to="/user/profile"><button>Mi Perfil</button></Link> 
+          <div id="navbar-menu-elements">
+            <Link to="/calendario"><button onClick={() => toggleClass()}>Calendario</button></Link>
+            {userRole === "entrenador" ?   
+            <Link to="/match"><button onClick={() => toggleClass()}>Crear Partidos</button></Link> 
+            : null}   
+            <Link to="/show-matches"><button onClick={() => toggleClass()}>Partidos</button></Link>  
+            <Link to="/show-players"><button onClick={() => toggleClass()}>Jugadores</button></Link>
+            <Link onClick={handleLogout}><button onClick={() => toggleClass()}>Cerrar Sesión</button></Link>
+            <div id="navBarProfile">
+              <p>Hola {nameUser}</p>
+              <Link to="/user/profile"><button onClick={() => toggleClass()}>Mi Perfil</button></Link> 
+            </div>
           </div>
         </div>
         <div id="nav-toggle">

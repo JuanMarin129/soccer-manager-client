@@ -59,7 +59,7 @@ function MatchDetails() {
         </>
         : null }
         <h3>Datos</h3>
-        <div className="showMatchesCSS">
+        <div className="showDetailsMatchCSS">
             <p>Competición: {dataMatch.competicion}</p>
             <p>Fecha: {dataMatch.fecha}</p>
             <p>Jornada: {dataMatch.jornada}</p>
@@ -70,8 +70,8 @@ function MatchDetails() {
             <p>Goles Anotados: {dataMatch.golesAnotados}</p>
             <p>Goles Encajados: {dataMatch.golesEncajados}</p>
         </div>
-        <div style={{display: "flex", justifyContent: "center", flexDirection: "column"}}>
-            <h3>Lista de jugadores:</h3>
+        <h2>Lista de jugadores:</h2>
+        <div id="showListPlayers">
             {dataMatch.jugadores.map((eachPlayer, index) => {
                 return (
                     <p key={index}>{eachPlayer.nombre} {eachPlayer.apellidos}</p>

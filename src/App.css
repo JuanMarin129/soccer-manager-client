@@ -9,8 +9,13 @@
 }
 
 
+
 a {
   text-decoration: none;
+}
+
+h1, h2, h3 {
+  background: radial-gradient(#60efbc, #58d5c9);
 }
 
 
@@ -40,13 +45,19 @@ a {
   position: absolute;
   left: 0;
   top: 2.5rem;
-  width: 15%;
+  width: 87%;
   height: calc(100vh - 3.5rem);
   background-color: gray;
   overflow: auto;
   padding: 1.5rem 1.25rem;
   opacity: 1;
   transition: all 0.4s;
+}
+
+#navbar-menu-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 #btn-burguer-active {
@@ -123,6 +134,17 @@ a {
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  background: radial-gradient(#60efbc, #58d5c9);
+  margin: 20px;
+  padding: 20px;
+  width:80%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  font-family: "Tomorrow", sans-serif;
 }
 
 .formularioMatchCard select {
@@ -133,26 +155,53 @@ a {
   margin-bottom: 20px;
 }
 
-.showMatchesCSS {
+.showDetailsMatchCSS {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.showMatchCard {
   background: radial-gradient(#60efbc, #58d5c9);
   margin: 20px;
   padding: 20px;
-  width: 500px;
+  width: 80%;
   min-height: 200px;
-  /*display: grid;
-  grid-template-rows: 20px 50px 1fr 50px;*/
   border-radius: 10px;
   border: 2px solid black;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.2s;
   font-size: 1.2rem;
   font-family: "Tomorrow", sans-serif;
+}
+
+.showMatchCard {
+  background: radial-gradient(#60efbc, #58d5c9);
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  font-family: "Tomorrow", sans-serif;
+}
+
+#showListPlayers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(#60efbc, #58d5c9);
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  font-family: "Tomorrow", sans-serif;
+
 }
 
 .showMatchCard:hover {
@@ -171,10 +220,17 @@ a {
 }
 
 #commentCardCSS {
-  display: flex;
-  flex-direction: column;
-  border: solid;
-  margin: 10px;
+  background: radial-gradient(#60efbc, #58d5c9);
+  margin: 20px;
+  padding: 20px;
+  width: 80%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  font-family: "Tomorrow", sans-serif;
 }
 
 #commentCardCSS p {
@@ -187,14 +243,67 @@ a {
 }
 
 #userCardCSS {
-  display: flex;
-  border: solid;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+  background: radial-gradient(#60efbc, #58d5c9);
+  margin: 20px;
+  padding: 20px;
+  width: 56%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  font-family: "Tomorrow", sans-serif;
+  font-weight: bold;
 }
 
-#userCardCSS p {
-  width: 80%;
+.profile-CSS {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(#60efbc, #58d5c9);
+  margin: 20px;
+  padding: 20px;
+  width:80%;
+  min-height: 200px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s;
+  font-size: 1.2rem;
+  font-family: "Tomorrow", sans-serif;
+
 }
+
+@media (width >= 768px) {
+
+  #navbar-menu-shadow {
+    position: static;
+    background-color: black;
+    width: 80%;
+    left: 0;
+    opacity: 1;
+    height: 5%;
+  }
+
+  #navbar-menu-show {
+    position: static;
+    background-color: black;
+    width: 80%;
+    height: 5%;
+  }
+
+  #nav-toggle {
+    display: none;
+  }
+
+  #navbar-menu-elements {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+}
+
 
 

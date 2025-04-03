@@ -61,8 +61,8 @@ function EditComment() {
         <form onSubmit={handleSubmit}>
           <legend>Comentario:</legend>
           <textarea rows="10" cols="40" value={textComment} onChange={handleText}></textarea>
-          <fieldset>
-              <legend>Elige si quieres que tu comentario sea público o privado</legend>
+          <fieldset style={{backgroundColor:"white"}}>
+              <legend style={{backgroundColor:"white"}}>Elige si quieres que tu comentario sea público o privado</legend>
               <input type="radio" name="visibilidad" value="Público" onChange={(e) => setVisibility("Público")}/>
               <label>Público</label>
               <input type="radio" name="visibilidad" value="Privado" onChange={(e) => setVisibility("Privado")} />

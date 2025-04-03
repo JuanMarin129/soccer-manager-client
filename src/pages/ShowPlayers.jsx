@@ -26,8 +26,9 @@ function ShowPlayers() {
   }
 
   return (
-    <div>
-        <h1>Jugadores</h1>
+    <>
+    <h1>Jugadores</h1>
+    <div style={{display: "flex", flexDirection:"column", alignItems:"center"}}>
         {listPlayers.map((eachPlayer, index) => {
           return (
             <UserCard
@@ -37,6 +38,7 @@ function ShowPlayers() {
         })}
 
     </div>
+  </>
   )
 }
 

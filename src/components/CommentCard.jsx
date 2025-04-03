@@ -52,20 +52,6 @@ function CommentCard(props) {
   //console.log(props.eachComment)
   return (
     <div id="commentCardCSS">
-      
-        {/*props.userCommentarie !== undefined  ?
-        <>
-          <div id="commentCardBtn">
-            <Link to={`/edit-comment/${props.userCommentarie._id}`}><button>Editar Comentario</button></Link> 
-            <button onClick={deleteCommentUserCreator}>Eliminar Comentario</button>
-          </div>
-          <fieldset>
-            <legend>{props.userCommentarie.creator.nombre} {props.userCommentarie.creator.apellidos}</legend>
-            <p>{props.userCommentarie.texto} </p>
-          </fieldset>
-        </>
-        : null */}
-
         {userRole === "entrenador" || props.eachComment.creator._id === loggedUserId ?
         <>
           <div id="commentCardBtn">

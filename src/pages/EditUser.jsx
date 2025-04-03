@@ -50,7 +50,7 @@ function EditUser() {
     <div>
 
     <h1>Editar Ficha Usuario</h1>
-    <form className="formularioCSS" onSubmit={handleSubmit}>
+    <form className="profile-CSS" onSubmit={handleSubmit}>
             <label>Nombre:</label>
             <input type="text" name="nombre" placeholder={dataUser.nombre}  onChange={handleChange} />
             <label>Apellidos:</label>

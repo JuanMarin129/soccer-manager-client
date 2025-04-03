@@ -31,7 +31,7 @@ function UserDetails() {
   
     console.log(dataUserProfile)
     return (
-    <div>
+    <div className="profile-CSS">
         <h1>Ficha de Usuario</h1>
         <p>{dataUserProfile.foto}</p>
         <p>Nombre: {dataUserProfile.nombre}</p>

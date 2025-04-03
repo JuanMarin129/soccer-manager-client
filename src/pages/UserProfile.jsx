@@ -32,7 +32,7 @@ function UserProfile() {
 
     return (
 
-    <div>
+    <div className="profile-CSS">
         <h1>Holiiiii, Perfil de Usuario</h1>
         <p>{dataUser.foto}</p>
         <p>Nombre: {dataUser.nombre}</p>
