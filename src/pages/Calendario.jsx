@@ -60,7 +60,7 @@ function Calendario() {
   //events.push(partido)
 
   return (
-    <div style={{height:"95vh", witdh:"95vw"}}>
+    <div id="calendarCSS">
       <Calendar
       localizer={localizer}
       events={events}

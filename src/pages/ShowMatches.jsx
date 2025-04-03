@@ -31,10 +31,6 @@ function ShowMatches() {
     return (
     <div>
         <div className="showMatchesCSS">
-            <h3>Rival</h3>
-            <h3>Fecha</h3>
-            <h3>Goles</h3>
-            <h3>Resultado</h3>
             {listMatches.map((eachMatch, index) => {
                 return (
                     <MatchCard
@@ -50,3 +46,9 @@ function ShowMatches() {
 }
 
 export default ShowMatches
+
+/* <h3>Rival</h3>
+   <h3>Fecha</h3>
+   <h3>Goles</h3>
+   <h3>Resultado</h3>
+            */
