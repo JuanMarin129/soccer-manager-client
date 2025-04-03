@@ -35,13 +35,12 @@ function Navbar() {
   return (
     
     <div id="navbar">
-
-      <img width={"105W"} height={"90vW"} src="logo_01.png" />
       {isLoggedIn === true
       ?
       <>
         <div id={isMenuActive ? "navbar-menu-show" : "navbar-menu-shadow"}>
           <div id="navbar-menu-elements">
+            <img width={"105W"} height={"90vW"} src="logo_01.png" />
             <Link to="/calendario"><button onClick={() => toggleClass()}>Calendario</button></Link>
             {userRole === "entrenador" ?   
             <Link to="/match"><button onClick={() => toggleClass()}>Crear Partidos</button></Link> 

@@ -58,25 +58,27 @@ function MatchDetails() {
         <button onClick={deleteMatch}>Eliminar Ficha Partido</button>
         </>
         : null }
-        <h3>Datos</h3>
-        <div className="showDetailsMatchCSS">
-            <p>Competición: {dataMatch.competicion}</p>
-            <p>Fecha: {dataMatch.fecha}</p>
-            <p>Jornada: {dataMatch.jornada}</p>
-            <p>Estadio: {dataMatch.estadio}</p>
-            <p>Equipo rival: {dataMatch.equipoRival}</p>
-            <p>Jugar como: {dataMatch.jugarComo}</p>
-            <p>Resultado: {dataMatch.resultado}</p>
-            <p>Goles Anotados: {dataMatch.golesAnotados}</p>
-            <p>Goles Encajados: {dataMatch.golesEncajados}</p>
-        </div>
-        <h2>Lista de jugadores:</h2>
-        <div id="showListPlayers">
-            {dataMatch.jugadores.map((eachPlayer, index) => {
-                return (
-                    <p key={index}>{eachPlayer.nombre} {eachPlayer.apellidos}</p>
-                )
-            })}
+        <div style={{display: "flex", flexDirection:"column", alignItems:"center"}}> 
+            <h2 style={{width:"100%"}}>Datos</h2>
+            <div className="showDetailsMatchCSS">
+                <p>Competición: {dataMatch.competicion}</p>
+                <p>Fecha: {dataMatch.fecha}</p>
+                <p>Jornada: {dataMatch.jornada}</p>
+                <p>Estadio: {dataMatch.estadio}</p>
+                <p>Equipo rival: {dataMatch.equipoRival}</p>
+                <p>Jugar como: {dataMatch.jugarComo}</p>
+                <p>Resultado: {dataMatch.resultado}</p>
+                <p>Goles Anotados: {dataMatch.golesAnotados}</p>
+                <p>Goles Encajados: {dataMatch.golesEncajados}</p>
+            </div>
+            <h3 style={{width:"100%"}}>Lista de jugadores:</h3>
+            <div id="showListPlayers">
+                {dataMatch.jugadores.map((eachPlayer, index) => {
+                    return (
+                        <p key={index}>{eachPlayer.nombre} {eachPlayer.apellidos}</p>
+                    )
+                })}
+            </div>
         </div>
  
        

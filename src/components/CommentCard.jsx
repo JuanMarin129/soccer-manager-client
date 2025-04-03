@@ -60,7 +60,7 @@ function CommentCard(props) {
           </div>
         </>
         : null }
-      <fieldset>
+      <fieldset id="fieldSetCSS">
         <legend>{props.eachComment.creator.nombre} {props.eachComment.creator.apellidos}</legend>
         <p>{props.eachComment.texto} </p>
       </fieldset>
