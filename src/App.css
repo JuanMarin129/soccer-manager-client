@@ -62,7 +62,7 @@ h1, h2, h3 {
   position: fixed;
   top: 0;
   height: 70px;
-  width: 69.9%;
+  width: 63.6%;
   background-color: black;
   display: flex;
   justify-content: space-between;
@@ -492,7 +492,7 @@ h1, h2, h3 {
   #navbar-menu-shadow {
     position:fixed;
     background-color: black;
-    width: 73.9%;
+    width: 67.3%;
     top: 0;
     left: 1px;
     height: 12%;
@@ -506,7 +506,7 @@ h1, h2, h3 {
   #navbar-menu-show {
     position:fixed;
     background-color: black;
-    width: 73.9%;
+    width: 67.3%;
     top: 0;
     left: 1px;
     height: 12%;
