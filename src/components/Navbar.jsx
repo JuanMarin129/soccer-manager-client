@@ -62,9 +62,12 @@ function Navbar() {
         </div>
      </>
       :
-      <>
-          <Link to="/signup"><button>Sign In</button></Link>
-          <Link to="/login"><button>Log In</button></Link>
+      <>  
+          <div id="navbar-logout"> 
+            <img width={"105W"} height={"90vW"} src={logo} />
+            <Link to="/signup"><button className="btnNavBar">Sign In</button></Link>
+            <Link to="/login"><button className="btnNavBar">Log In</button></Link>
+          </div>
       </>
       }    
     </div>

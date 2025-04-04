@@ -68,7 +68,7 @@ function EditComment() {
               <input type="radio" name="visibilidad" value="Privado" onChange={(e) => setVisibility("Privado")} />
               <label>Privado</label>
           </fieldset>
-          <button type="submit"> Editar Comentario</button>
+          <button className="btnEditComment" type="submit"> Editar Comentario</button>
         </form>
 
 

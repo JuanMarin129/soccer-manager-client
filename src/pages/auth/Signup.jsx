@@ -56,7 +56,7 @@ function Signup() {
     <div>
         <h1>Registro de Usuario</h1>
         <div>
-          <form className="formularioCSS" onSubmit={handleSignup}>
+          <form className="formularioMatchCard" onSubmit={handleSignup}>
             <label>Nombre</label>
             <input type="text" name="nombre" value={nombre} onChange={handleNombre} />
             <label>Apellidos</label>
@@ -65,7 +65,7 @@ function Signup() {
             <input type="email" name="email" value={email} onChange={handleEmail} />
             <label>Password</label>
             <input type="password" name="password" value={password} onChange={handlePassword} />
-            <button className="buttonFormCSS" type="submit">Registrarse</button>
+            <button className="btnEditComment" type="submit">Registrarse</button>
 
             {errorMessage !== null ? <p>{errorMessage}</p> : null }
           </form>

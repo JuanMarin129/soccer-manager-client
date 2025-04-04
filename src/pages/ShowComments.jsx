@@ -55,7 +55,7 @@ function ShowComments() {
             )
         })}
         {hasUserCommented === false ?
-        <Link to={`/add-comment/${parametrosDinamicos.matchID}`}><button>Añadir Comentario</button></Link>
+        <Link to={`/add-comment/${parametrosDinamicos.matchID}`}><button className="btnEditComment">Añadir Comentario</button></Link>
         : null }
     </div>
   )

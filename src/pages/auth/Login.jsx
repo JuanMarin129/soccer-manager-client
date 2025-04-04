@@ -51,12 +51,12 @@ function Login() {
     <div>
        <h1>Formulario de Acceso</h1>
         <div>
-          <form className="formularioCSS" onSubmit={handleLogin}>
+          <form className="formularioMatchCard" onSubmit={handleLogin}>
             <label>Email</label>
             <input type="email" name="email" value={email} onChange={handleEmail} />
             <label>Password</label>
             <input type="password" name="password" value={password} onChange={handlePassword} />
-            <button className="buttonFormCSS" type="submit">Acceder</button>
+            <button className="btnEditComment" type="submit">Acceder</button>
 
             {errorMessage !== null ? <p>{errorMessage}</p> : null }
           </form>

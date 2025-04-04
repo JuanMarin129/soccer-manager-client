@@ -55,8 +55,8 @@ function CommentCard(props) {
         {userRole === "entrenador" || props.eachComment.creator._id === loggedUserId ?
         <>
           <div id="commentCardBtn">
-            <Link to={`/edit-comment/${props.eachComment._id}`}><button>Editar Comentario</button></Link> 
-            <button onClick={deleteComment}>Eliminar Comentario</button>
+            <Link to={`/edit-comment/${props.eachComment._id}`}><button className="btnEditComment">Editar Comentario</button></Link> 
+            <button className="btnDelete" onClick={deleteComment}>Eliminar Comentario</button>
           </div>
         </>
         : null }
