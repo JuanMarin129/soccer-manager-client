@@ -10,9 +10,6 @@ function MatchCard(props) {
 
   console.log(props.eachMatch)
 
-  //let nuevaFecha = moment(props.eachMatch.fecha, "MM/DD/YY")
- 
-  //console.log(mostrarFecha)
   return (
     <div className="showMatchCard"> 
         <p><span style={{fontWeight:"bold"}}>Equipo Rival:</span> {props.eachMatch.equipoRival}</p>

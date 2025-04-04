@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { data, Link, useParams } from 'react-router-dom';
 import service from '../services/config.services';
+import moment from 'moment';
 
 
 function UserDetails() {
@@ -28,6 +29,9 @@ function UserDetails() {
     if(dataUserProfile === null) {
         return <h3>Espere por favor... estamos trayendo la data</h3>
     }
+
+    // Realizamos las gestiones para mostrar los formatos correctos
+     let mostrarFecha = moment(dataUserProfile.fecha).format("L") // Sería este formato 03/04/2025
   
     console.log(dataUserProfile)
     return (
@@ -37,10 +41,10 @@ function UserDetails() {
         <p>Nombre: {dataUserProfile.nombre}</p>
         <p>Apellidos: {dataUserProfile.apellidos}</p>
         <p>Email: {dataUserProfile.email}</p>
-        <p>Fecha de Nacimiento: {dataUserProfile.fechaNacimiento}</p>
+        <p>Fecha de Nacimiento: {mostrarFecha}</p>
         <p>País de Nacionalidad: {dataUserProfile.PaisNacionalidad}</p>
         <p>Equipo: {dataUserProfile.equipo}</p>
-        <Link to={`/user-edit/${parametrosDinamicos.userID}`} ><button>Editar Ficha Usuario</button></Link>
+        <Link to={`/user-edit/${parametrosDinamicos.userID}`} ><button className="btnEditComment">Editar Ficha Usuario</button></Link>
     </div>
   )
 }

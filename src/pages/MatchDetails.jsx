@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import service from '../services/config.services';
 import { AuthContext } from '../context/auth.context';
+import moment from 'moment';
 
 function MatchDetails() {
   
@@ -48,7 +49,10 @@ function MatchDetails() {
         return <h3>Espere por favor... estamos trayendo la data</h3>
     }
   
-    console.log(dataMatch.jugadores)
+    // Realizamos las gestiones para mostrar los formatos correctos
+    let mostrarFecha = moment(dataMatch.fecha).format("L") // Sería este formato 03/04/2025
+
+
     return (
     <div> 
         <h1>Ficha del Partido</h1>
@@ -62,7 +66,7 @@ function MatchDetails() {
             <h2 style={{width:"100%"}}>Datos</h2>
             <div className="showDetailsMatchCSS">
                 <p>Competición: {dataMatch.competicion}</p>
-                <p>Fecha: {dataMatch.fecha}</p>
+                <p>Fecha: {mostrarFecha}</p>
                 <p>Jornada: {dataMatch.jornada}</p>
                 <p>Estadio: {dataMatch.estadio}</p>
                 <p>Equipo rival: {dataMatch.equipoRival}</p>
