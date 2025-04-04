@@ -15,19 +15,14 @@ function ShowMatches() {
         try {
           const response = await service.get("/match")
           setListMatches(response.data)
-          console.log(response.data)
-          
         } catch (error) {
           console.log(error)
         }
       }
-    
       if(listMatches === null) {
         return <h3>Espere por favor. Conectando con la data...</h3>
       }
 
-
-    console.log(listMatches)
     return (
     <div>
         <div className="showMatchesCSS">
@@ -39,16 +34,8 @@ function ShowMatches() {
                 )
             })}
         </div>
-
-
     </div>
   )
 }
 
 export default ShowMatches
-
-/* <h3>Rival</h3>
-   <h3>Fecha</h3>
-   <h3>Goles</h3>
-   <h3>Resultado</h3>
-            */

@@ -194,7 +194,7 @@ function AddMatchCard() {
                     })}
                 </select>
                 
-                <button type="submit">Crear Ficha Partido</button>
+                <button className="btnEditAndComment" type="submit">Crear Ficha Partido</button>
             </form>
         </div>
   )

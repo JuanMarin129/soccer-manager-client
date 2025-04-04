@@ -121,7 +121,7 @@ function EditProfile() {
             <input type="text" name="telefono" onChange={handleChange} />
             <label>Equipo:</label>
             <input type="text" name="equipo" onChange={handleChange} />
-            <button type="submit">Editar Ficha Usuario</button>
+            <button className="btnEditAndComment" type="submit">Editar Ficha Usuario</button>
       </form>      
 
     </div>

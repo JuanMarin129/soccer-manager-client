@@ -19,8 +19,8 @@ function MatchCard(props) {
         <p><span style={{fontWeight:"bold"}}>Fecha:</span> {mostrarFecha}</p>
         <p><span style={{fontWeight:"bold"}}>Goles:</span> {goles}</p>
         <p><span style={{fontWeight:"bold"}}>Resultado:</span> {props.eachMatch.resultado}</p>
-        <Link to={`/match-details/${props.eachMatch._id}`} ><button>Ficha Partido</button></Link> 
-        <Link to={`/show-comments/${props.eachMatch._id}`}><button>Comentarios</button></Link> 
+        <Link to={`/match-details/${props.eachMatch._id}`} ><button className="btnEditAndComment">Ficha Partido</button></Link> 
+        <Link to={`/show-comments/${props.eachMatch._id}`}><button className="btnEditAndComment"S>Comentarios</button></Link> 
     </div>
   )
 }

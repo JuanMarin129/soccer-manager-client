@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/auth.context'
 import { FiAlignJustify } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
+import logo from "../assets/logo_01.png"
 
 function Navbar() {
 
@@ -40,17 +41,17 @@ function Navbar() {
       <>
         <div id={isMenuActive ? "navbar-menu-show" : "navbar-menu-shadow"}>
           <div id="navbar-menu-elements">
-            <img width={"105W"} height={"90vW"} src="logo_01.png" />
-            <Link to="/calendario"><button onClick={() => toggleClass()}>Calendario</button></Link>
+            <img width={"105W"} height={"90vW"} src={logo} />
+            <Link to="/calendario"><button className="btnNavBar" onClick={() => toggleClass()}>Calendario</button></Link>
             {userRole === "entrenador" ?   
-            <Link to="/match"><button onClick={() => toggleClass()}>Crear Partidos</button></Link> 
+            <Link to="/match"><button className="btnNavBar" onClick={() => toggleClass()}>Crear Partidos</button></Link> 
             : null}   
-            <Link to="/show-matches"><button onClick={() => toggleClass()}>Partidos</button></Link>  
-            <Link to="/show-players"><button onClick={() => toggleClass()}>Jugadores</button></Link>
-            <Link onClick={handleLogout}><button onClick={() => toggleClass()}>Cerrar Sesión</button></Link>
+            <Link to="/show-matches"><button className="btnNavBar" onClick={() => toggleClass()}>Partidos</button></Link>  
+            <Link to="/show-players"><button className="btnNavBar" onClick={() => toggleClass()}>Jugadores</button></Link>
+            <Link onClick={handleLogout}><button className="btnRed" onClick={() => toggleClass()}>Cerrar Sesión</button></Link>
             <div id="navBarProfile">
               <p>Hola {nameUser}</p>
-              <Link to="/user/profile"><button onClick={() => toggleClass()}>Mi Perfil</button></Link> 
+              <Link to="/user/profile"><button className="btnNavBar" onClick={() => toggleClass()}>Mi Perfil</button></Link> 
             </div>
           </div>
         </div>
